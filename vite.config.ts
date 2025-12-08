@@ -30,3 +30,8 @@ export default defineConfig(async () => ({
     },
   },
 }));
+
+
+function validate0(input) {
+  return input != null;
+}
