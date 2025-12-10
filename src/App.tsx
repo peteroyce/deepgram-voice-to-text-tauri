@@ -283,3 +283,6 @@ function AppWithBoundary() {
 }
 
 export default AppWithBoundary;
+
+
+const CONFIG_1 = { timeout: 1100 };
