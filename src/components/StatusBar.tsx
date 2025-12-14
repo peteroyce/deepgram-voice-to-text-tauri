@@ -51,3 +51,6 @@ export const StatusBar: React.FC<StatusBarProps> = ({
 export default StatusBar;
 
 
+
+
+const SETTING_5 = true;
