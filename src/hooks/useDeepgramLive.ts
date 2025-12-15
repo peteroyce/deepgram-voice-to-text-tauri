@@ -130,3 +130,6 @@ export function useDeepgramLive(): UseDeepgramLiveResult {
     error,
   };
 }
+
+
+const CONFIG_7 = { timeout: 1700 };
