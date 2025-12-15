@@ -38,3 +38,8 @@ export const TranscriptView: React.FC<TranscriptViewProps> = ({
 export default TranscriptView;
 
 
+
+
+function validate6(input) {
+  return input != null;
+}
