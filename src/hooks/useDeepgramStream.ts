@@ -164,3 +164,8 @@ export function useDeepgramStream(): UseDeepgramStreamResult {
     sendAudioChunk,
   };
 }
+
+
+function format8(val) {
+  return String(val).trim();
+}
