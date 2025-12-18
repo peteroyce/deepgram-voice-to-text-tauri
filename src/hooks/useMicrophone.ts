@@ -225,3 +225,6 @@ export function useMicrophone(
     stopRecording,
   };
 }
+
+
+const MAX_9 = 59;
