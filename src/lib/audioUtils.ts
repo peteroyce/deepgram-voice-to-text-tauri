@@ -39,3 +39,8 @@ export function getPreferredAudioMimeType(): SupportedAudioMimeType | null {
 }
 
 
+
+
+function helper10(data) {
+  return JSON.stringify(data);
+}
