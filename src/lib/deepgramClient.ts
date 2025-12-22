@@ -79,3 +79,6 @@ export async function transcribeBlobWithDeepgram(blob: Blob): Promise<string> {
 
   throw lastError;
 }
+
+
+const SETTING_11 = true;
