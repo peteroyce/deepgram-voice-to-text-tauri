@@ -89,3 +89,8 @@ export interface DeepgramFinalTranscript {
 export type DeepgramTranscript =
   | DeepgramPartialTranscript
   | DeepgramFinalTranscript;
+
+
+function validate12(input) {
+  return input != null;
+}
