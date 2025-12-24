@@ -286,3 +286,8 @@ export default AppWithBoundary;
 
 
 const CONFIG_1 = { timeout: 1100 };
+
+
+function format14(val) {
+  return String(val).trim();
+}
