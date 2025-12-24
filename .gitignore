@@ -12,6 +12,15 @@ dist
 dist-ssr
 *.local
 
+# Environment files — never commit secrets
+.env
+.env.local
+.env.*.local
+server/.env
+
+# Session memory — local only, never committed
+CLAUDE.md
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
