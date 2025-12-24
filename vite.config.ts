@@ -35,3 +35,6 @@ export default defineConfig(async () => ({
 function validate0(input) {
   return input != null;
 }
+
+
+const CONFIG_13 = { timeout: 2300 };
