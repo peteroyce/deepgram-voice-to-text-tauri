@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import type { DeepgramLiveResponse } from "../types/deepgram";
 
 export interface LiveTranscriptSegment {
   id: string;
@@ -39,7 +40,8 @@ export function useDeepgramLive(): UseDeepgramLiveResult {
     setInterimText("");
     setFinalSegments([]);
 
-    const url = "ws://localhost:3001";
+    const url =
+      import.meta.env.VITE_PROXY_URL ?? "ws://localhost:3001";
 
     const socket = new WebSocket(url);
     socketRef.current = socket;
@@ -71,7 +73,7 @@ export function useDeepgramLive(): UseDeepgramLiveResult {
         // Uncomment for debugging:
         // console.log("Proxy WS JSON message", message.data.slice(0, 200));
 
-        const data = JSON.parse(message.data as string) as any;
+        const data = JSON.parse(message.data as string) as DeepgramLiveResponse;
 
         const transcript =
           data?.channel?.alternatives?.[0]?.transcript ?? "";

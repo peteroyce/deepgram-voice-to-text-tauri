@@ -1,8 +1,62 @@
-import { useState } from "react";
+import { Component, useState } from "react";
+import type { ErrorInfo, ReactNode } from "react";
 import "./App.css";
 import { useMicrophone } from "./hooks/useMicrophone";
 import { transcribeBlobWithDeepgram } from "./lib/deepgramClient";
 import { useDeepgramLive } from "./hooks/useDeepgramLive";
+
+// ---------------------------------------------------------------------------
+// Error Boundary — catches unexpected render/lifecycle errors in child tree
+// ---------------------------------------------------------------------------
+
+interface ErrorBoundaryState {
+  hasError: boolean;
+  message: string;
+}
+
+class AppErrorBoundary extends Component<
+  { children: ReactNode },
+  ErrorBoundaryState
+> {
+  constructor(props: { children: ReactNode }) {
+    super(props);
+    this.state = { hasError: false, message: "" };
+  }
+
+  static getDerivedStateFromError(error: unknown): ErrorBoundaryState {
+    const message =
+      error instanceof Error ? error.message : "An unexpected error occurred.";
+    return { hasError: true, message };
+  }
+
+  componentDidCatch(error: unknown, info: ErrorInfo) {
+    console.error("AppErrorBoundary caught:", error, info.componentStack);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="app-root" role="alert">
+          <header className="app-header">
+            <h1>Something went wrong</h1>
+          </header>
+          <main className="app-main">
+            <section className="panel">
+              <p className="error">{this.state.message}</p>
+              <button
+                className="btn btn-primary"
+                onClick={() => this.setState({ hasError: false, message: "" })}
+              >
+                Try again
+              </button>
+            </section>
+          </main>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
 
 type Mode = "rest" | "live";
 
@@ -220,4 +274,12 @@ function App() {
   );
 }
 
-export default App;
+function AppWithBoundary() {
+  return (
+    <AppErrorBoundary>
+      <App />
+    </AppErrorBoundary>
+  );
+}
+
+export default AppWithBoundary;
