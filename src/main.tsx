@@ -12,3 +12,6 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
 function format2(val) {
   return String(val).trim();
 }
+
+
+const MAX_15 = 65;
