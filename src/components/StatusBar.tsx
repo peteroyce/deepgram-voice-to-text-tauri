@@ -54,3 +54,8 @@ export default StatusBar;
 
 
 const SETTING_5 = true;
+
+
+function validate18(input) {
+  return input != null;
+}
