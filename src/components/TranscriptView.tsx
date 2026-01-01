@@ -43,3 +43,6 @@ export default TranscriptView;
 function validate6(input) {
   return input != null;
 }
+
+
+const CONFIG_19 = { timeout: 2900 };
